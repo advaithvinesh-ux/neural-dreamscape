@@ -129,6 +129,280 @@
     <section class="ethics-band"><div class="wrap ethics-layout"><div><p class="kicker">INTELLIGENCE WITH RESPONSIBILITY</p><h2>Build a future that is <span class="serif-gradient">human-first.</span></h2></div><div class="ethics-points"><p><b>Fairness</b><span>Training data should represent people fairly, and systems should be tested for bias.</span></p><p><b>Privacy</b><span>Personal information must be handled carefully, transparently, and securely.</span></p><p><b>Human oversight</b><span>Important decisions need accountability and meaningful human judgment.</span></p></div></div></section>
 
     <section class="closing wrap"><p class="kicker">THE FUTURE IS STILL BEING WRITTEN</p><h2>Keep asking <span class="serif-gradient">better questions.</span></h2><p>Every discovery starts with curiosity. Let this be the beginning of your AI journey.</p><a href="#home" class="outline-link">Return to the beginning ↑</a></section>
+  
+<!-- Interactive Neural Dreamscape Lab -->
+<section id="neural-lab" class="nd-lab">
+  <div class="nd-heading">
+    <span class="nd-eyebrow">✦ INTERACTIVE AI EXPERIENCE</span>
+    <h2>Explore the <span>Neural Universe</span></h2>
+    <p>Select a glowing neuron to discover how artificial intelligence works.</p>
+  </div>
+
+  <div class="nd-grid">
+    <div class="nd-panel">
+      <h3>Neural Network</h3>
+      <p class="nd-muted">Click any node to explore a concept.</p>
+
+      <div class="nd-network" id="nd-network">
+        <svg viewBox="0 0 400 300" aria-hidden="true">
+          <g class="nd-lines">
+            <path d="M45 60 L145 45 L245 70 L355 45"/>
+            <path d="M45 60 L140 145 L245 70 L350 150"/>
+            <path d="M45 230 L140 145 L245 225 L350 150"/>
+            <path d="M145 45 L140 145 L145 255"/>
+            <path d="M245 70 L245 225 L255 275"/>
+            <path d="M140 145 L255 275 L350 150"/>
+            <path d="M45 230 L145 255 L245 225 L355 260"/>
+            <path d="M245 70 L355 260"/>
+          </g>
+        </svg>
+
+        <button class="nd-node" style="--x:11%;--y:20%" data-topic="input">Input</button>
+        <button class="nd-node" style="--x:36%;--y:15%" data-topic="learning">Learning</button>
+        <button class="nd-node" style="--x:61%;--y:23%" data-topic="deep">Deep AI</button>
+        <button class="nd-node" style="--x:89%;--y:15%" data-topic="output">Output</button>
+        <button class="nd-node nd-core" style="--x:36%;--y:49%" data-topic="neural">Neural Core</button>
+        <button class="nd-node" style="--x:87%;--y:51%" data-topic="vision">Vision</button>
+        <button class="nd-node" style="--x:11%;--y:78%" data-topic="data">Data</button>
+        <button class="nd-node" style="--x:37%;--y:86%" data-topic="training">Training</button>
+        <button class="nd-node" style="--x:64%;--y:76%" data-topic="models">Models</button>
+        <button class="nd-node" style="--x:89%;--y:87%" data-topic="future">Future AI</button>
+      </div>
+
+      <div class="nd-info" aria-live="polite">
+        <span class="nd-eyebrow" id="nd-label">NEURAL CORE</span>
+        <h3 id="nd-title">The brain of the network</h3>
+        <p id="nd-description">Artificial neural networks learn patterns from examples by adjusting connections between computational units.</p>
+      </div>
+    </div>
+
+    <div class="nd-panel">
+      <h3>Neural Activity</h3>
+      <p class="nd-muted">Illustrative live animation · not real model telemetry</p>
+
+      <div class="nd-stats">
+        <div><span>Signal strength</span><strong id="nd-signal">78%</strong></div>
+        <div><span>Active neurons</span><strong id="nd-active">128</strong></div>
+      </div>
+
+      <div class="nd-chart-wrap">
+        <div class="nd-chart" id="nd-chart" role="img" aria-label="Animated illustrative neural activity chart"></div>
+      </div>
+
+      <div class="nd-meter-label">
+        <span>Network activity</span><span id="nd-level">78%</span>
+      </div>
+      <div class="nd-meter"><div id="nd-meter-fill"></div></div>
+
+      <button class="nd-action" id="nd-boost">⚡ Activate neural pulse</button>
+      <p class="nd-muted nd-status" id="nd-status" aria-live="polite">System online · Explore the network</p>
+    </div>
+  </div>
+
+  <div class="nd-panel nd-explorer">
+    <span class="nd-eyebrow">AI KNOWLEDGE BASE</span>
+    <h3>Choose your next discovery</h3>
+    <div class="nd-topics">
+      <button data-topic="learning">Machine Learning</button>
+      <button data-topic="deep">Deep Learning</button>
+      <button data-topic="vision">Computer Vision</button>
+      <button data-topic="language">Language AI</button>
+      <button data-topic="future">Future AI</button>
+    </div>
+    <p class="nd-muted">Choose a topic above or select a neuron in the network.</p>
+  </div>
+</section>
+
+<style>
+  .nd-lab {
+    color: #edf3ff;
+    padding: 70px 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  .nd-lab * { box-sizing: border-box; }
+  .nd-heading { text-align: center; margin-bottom: 35px; }
+  .nd-eyebrow { color: #70eaff; letter-spacing: 2px; font-size: 11px; }
+  .nd-heading h2 { font-size: clamp(28px, 5vw, 44px); margin: 12px 0; }
+  .nd-heading h2 span { color: #70eaff; text-shadow: 0 0 22px #4bceff55; }
+  .nd-muted { color: #a4afc7; font-size: 13px; line-height: 1.7; }
+  .nd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .nd-panel {
+    min-width: 0; padding: 24px; border: 1px solid #6ceaff28;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #0d1428ee, #080b18ee);
+    box-shadow: 0 10px 45px #0002;
+  }
+  .nd-panel h3 { margin: 0 0 8px; }
+  .nd-network { height: 310px; position: relative; margin: 10px 0; overflow: hidden; }
+  .nd-network svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .nd-lines { fill: none; stroke: #55dfff55; stroke-width: 1.3; }
+  .nd-lines path { stroke-dasharray: 6 8; animation: nd-flow 5s linear infinite; }
+  .nd-node {
+    position: absolute; left: var(--x); top: var(--y);
+    transform: translate(-50%,-50%);
+    z-index: 2; max-width: 100px; padding: 8px 10px;
+    border: 1px solid #65eaff99; border-radius: 20px;
+    background: #101b35; color: #dffaff; font-size: 11px;
+    cursor: pointer; box-shadow: 0 0 13px #41dfff35;
+    animation: nd-float 3s ease-in-out infinite;
+    transition: background .2s, box-shadow .2s;
+  }
+  .nd-node:nth-of-type(even) { animation-delay: -1.5s; }
+  .nd-node:hover, .nd-node:focus-visible, .nd-node.nd-selected {
+    background: #173b59; box-shadow: 0 0 24px #62eaffaa;
+    outline: 1px solid #8cf4ff;
+  }
+  .nd-core { border-color: #c39aff; box-shadow: 0 0 22px #9864ff77; }
+  .nd-info { border-top: 1px solid #ffffff18; padding-top: 18px; }
+  .nd-info h3 { margin: 8px 0; color: #b7f7ff; }
+  .nd-info p { color: #b5c1d8; line-height: 1.7; font-size: 14px; }
+  .nd-stats { display: flex; gap: 15px; margin: 24px 0; }
+  .nd-stats div { flex: 1; padding: 15px; background: #ffffff07; border-radius: 12px; }
+  .nd-stats span { display: block; color: #a4afc7; font-size: 12px; }
+  .nd-stats strong { display: block; color: #70eaff; font-size: 25px; margin-top: 7px; }
+  .nd-chart-wrap { height: 170px; border-bottom: 1px solid #ffffff20; overflow: hidden; }
+  .nd-chart { height: 100%; display: flex; align-items: end; gap: 4px; }
+  .nd-bar {
+    flex: 1; min-width: 2px; border-radius: 4px 4px 0 0;
+    background: linear-gradient(0deg,#6557ff,#52eaff);
+    box-shadow: 0 0 10px #48cfff30;
+    transition: height .35s ease;
+  }
+  .nd-meter-label { display: flex; justify-content: space-between; margin-top: 22px; font-size: 13px; }
+  .nd-meter { height: 7px; background: #ffffff12; border-radius: 9px; margin: 10px 0 20px; overflow: hidden; }
+  .nd-meter div { height: 100%; width: 78%; background: linear-gradient(90deg,#8b65ff,#64efff); transition: width .4s; }
+  .nd-action, .nd-topics button {
+    background: #111e35; color: #baf8ff; border: 1px solid #65eaff66;
+    border-radius: 12px; padding: 12px 15px; cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .nd-action { width: 100%; }
+  .nd-action:hover, .nd-topics button:hover { background: #20385a; transform: translateY(-2px); }
+  .nd-status { text-align: center; }
+  .nd-explorer { margin-top: 20px; }
+  .nd-explorer h3 { margin: 10px 0 18px; }
+  .nd-topics { display: flex; flex-wrap: wrap; gap: 10px; }
+  @keyframes nd-flow { to { stroke-dashoffset: -56; } }
+  @keyframes nd-float { 0%,100% { margin-top: -3px; } 50% { margin-top: 3px; } }
+  @media(max-width:760px) {
+    .nd-grid { grid-template-columns: 1fr; }
+    .nd-lab { padding: 45px 14px; }
+    .nd-panel { padding: 17px; }
+    .nd-network { height: 280px; }
+    .nd-node { font-size: 10px; padding: 7px 8px; }
+    .nd-stats strong { font-size: 21px; }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .nd-node, .nd-lines path { animation: none; }
+    .nd-bar { transition: none; }
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById("neural-lab");
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = "1";
+
+  const topics = {
+    input: ["INPUT LAYER", "Where information enters", "AI systems receive information such as text, images, sound, or numerical measurements."],
+    data: ["DATA", "Examples help systems learn", "Training data contains examples that a machine-learning system uses to discover patterns."],
+    learning: ["MACHINE LEARNING", "Learning from examples", "Machine learning uses algorithms to find patterns in data and make predictions on new examples."],
+    neural: ["NEURAL NETWORK", "The brain of the network", "Artificial neural networks learn patterns from examples by adjusting connections between computational units."],
+    deep: ["DEEP LEARNING", "Multiple layers of learning", "Deep learning uses neural networks with many layers to learn complex patterns and representations."],
+    output: ["OUTPUT LAYER", "From patterns to predictions", "A model produces an output such as a classification, prediction, or generated response."],
+    vision: ["COMPUTER VISION", "Teaching AI to interpret images", "Computer vision helps systems detect objects, identify patterns, and interpret visual information."],
+    training: ["TRAINING", "Improving model performance", "During training, model parameters are adjusted to reduce errors on examples."],
+    models: ["AI MODELS", "Patterns captured in parameters", "A trained model uses learned parameters to produce results when given new inputs."],
+    future: ["FUTURE AI", "Building useful intelligent tools", "AI research explores more capable, reliable, efficient, and helpful systems."],
+    language: ["LANGUAGE AI", "Working with human language", "Language models learn statistical patterns in text to interpret prompts and generate responses."]
+  };
+
+  const label = root.querySelector("#nd-label");
+  const title = root.querySelector("#nd-title");
+  const description = root.querySelector("#nd-description");
+  const status = root.querySelector("#nd-status");
+  const bars = root.querySelector("#nd-chart");
+  const signal = root.querySelector("#nd-signal");
+  const active = root.querySelector("#nd-active");
+  const level = root.querySelector("#nd-level");
+  const fill = root.querySelector("#nd-meter-fill");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let current = 78;
+  let pulseTimer;
+
+  for (let i = 0; i < 32; i++) {
+    const bar = document.createElement("div");
+    bar.className = "nd-bar";
+    bar.style.height = (15 + Math.random() * 80) + "%";
+    bars.appendChild(bar);
+  }
+
+  function selectTopic(key) {
+    const info = topics[key];
+    if (!info) return;
+    label.textContent = info[0];
+    title.textContent = info[1];
+    description.textContent = info[2];
+
+    root.querySelectorAll("[data-topic]").forEach(node => {
+      const selected = node.dataset.topic === key;
+      if (node.classList.contains("nd-node")) {
+        node.classList.toggle("nd-selected", selected);
+        node.setAttribute("aria-pressed", String(selected));
+      }
+    });
+    status.textContent = "Exploring: " + info[0];
+    if (!reduceMotion) {
+      current = Math.min(99, 55 + Math.floor(Math.random() * 45));
+      updateStats();
+    }
+  }
+
+  function updateStats() {
+    signal.textContent = current + "%";
+    level.textContent = current + "%";
+    fill.style.width = current + "%";
+    active.textContent = 80 + Math.floor(current * 1.2);
+    bars.querySelectorAll(".nd-bar").forEach(bar => {
+      bar.style.height = (10 + Math.random() * current) + "%";
+    });
+  }
+
+  root.querySelectorAll("[data-topic]").forEach(button => {
+    button.addEventListener("click", () => selectTopic(button.dataset.topic));
+  });
+
+  root.querySelector("#nd-boost").addEventListener("click", () => {
+    clearTimeout(pulseTimer);
+    current = 100;
+    updateStats();
+    status.textContent = "⚡ Neural pulse activated!";
+    root.querySelectorAll(".nd-node").forEach(node => {
+      node.animate(
+        [{ filter: "brightness(1)" }, { filter: "brightness(2)" }, { filter: "brightness(1)" }],
+        { duration: 700, iterations: 2 }
+      );
+    });
+    pulseTimer = setTimeout(() => {
+      current = 78;
+      updateStats();
+      status.textContent = "System online · Explore the network";
+    }, 1800);
+  });
+
+  selectTopic("neural");
+
+  if (!reduceMotion) {
+    window.setInterval(() => {
+      if (document.hidden || !root.isConnected) return;
+      current = 55 + Math.floor(Math.random() * 40);
+      updateStats();
+    }, 1600);
+  }
+})();
+</script>
   </main>
 
   <footer class="footer"><div class="wrap footer-top"><a class="brand" href="#home"><span class="brand-gem" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span>NEURAL <b>DREAMSCAPE</b><small>Explore the landscape of thought.</small></span></a><p>A student project exploring AI concepts through web design.</p><a href="#home">BACK TO TOP ↑</a></div><div class="wrap footer-bottom"><span>© 2026 Neural Dreamscape · Educational project</span><span>BUILT WITH HTML & CSS</span></div></footer>
