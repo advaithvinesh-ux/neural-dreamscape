@@ -132,5 +132,128 @@
   </main>
 
   <footer class="footer"><div class="wrap footer-top"><a class="brand" href="#home"><span class="brand-gem" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span>NEURAL <b>DREAMSCAPE</b><small>Explore the landscape of thought.</small></span></a><p>A student project exploring AI concepts through web design.</p><a href="#home">BACK TO TOP ↑</a></div><div class="wrap footer-bottom"><span>© 2026 Neural Dreamscape · Educational project</span><span>BUILT WITH HTML & CSS</span></div></footer>
+
+<!-- Full-page neural particle animation -->
+<canvas id="neural-particles" aria-hidden="true"></canvas>
+
+<style>
+  #neural-particles {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+  }
+
+  /* Keep the website content above the particles */
+  body > *:not(#neural-particles) {
+    position: relative;
+  }
+
+  #neural-particles {
+    position: fixed !important;
+  }
+
+  /* Keep interactive elements usable */
+  button, a, input, textarea, select {
+    position: relative;
+  }
+</style>
+
+<script>
+(() => {
+  const canvas = document.getElementById("neural-particles");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  let width = 0, height = 0, particles = [];
+  let animationId;
+  const spacing = 125;
+  const colors = ["108, 234, 255", "151, 105, 255", "95, 170, 255"];
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.min(
+      150,
+      Math.max(35, Math.floor(width * height / 9500))
+    );
+
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.65,
+      vy: (Math.random() - 0.5) * 0.65,
+      r: Math.random() * 2 + 0.7,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    }));
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const q = particles[j];
+        const dx = p.x - q.x;
+        const dy = p.y - q.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < spacing) {
+          const alpha = (1 - distance / spacing) * 0.28;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = `rgba(108, 190, 255, ${alpha})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color}, 0.85)`;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = `rgb(${p.color})`;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    animationId = requestAnimationFrame(animate);
+  }
+
+  resize();
+  animate();
+
+  window.addEventListener("resize", resize);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animationId);
+    } else {
+      cancelAnimationFrame(animationId);
+      animate();
+    }
+  });
+})();
+</script>
 </body>
 </html>
